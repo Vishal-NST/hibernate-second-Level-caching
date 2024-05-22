@@ -1,27 +1,23 @@
 package com.demo.hibernatesecondLevelcaching.config;
-import lombok.Data;
+
+import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Setter
 @Getter
-@Data
 @Configuration
-@ConfigurationProperties(prefix = "vault")
+@ConfigurationProperties(prefix = "db-credentials")
 public class vaultConfig {
 
-    private static String username;
+    private String username;
+    private String password;
 
-    private static String password;
-
-    public static String getUsername() {
-        return username;
-    }
-
-    public static String getPassword() {
-        return password;
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("Username from Vault: " + username);
+        System.out.println("Password from Vault: " + password);
     }
 }

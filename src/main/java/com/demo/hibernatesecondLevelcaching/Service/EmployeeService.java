@@ -18,6 +18,8 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
     @Autowired
     private GlobalExceptionHandler globalExceptionHandler;
+    @Autowired
+    private static vaultConfig vaultConfig;
 
     @Cacheable("employees")
     public String getFemaleEmployees() {
@@ -86,6 +88,7 @@ public class EmployeeService {
         System.out.println("Password: " + vaultConfig.getPassword());
         return "Username: " + vaultConfig.getUsername() + ", Password: " + vaultConfig.getPassword();
     }
+
 
 
     @CacheEvict(cacheNames = "employees", allEntries = true)

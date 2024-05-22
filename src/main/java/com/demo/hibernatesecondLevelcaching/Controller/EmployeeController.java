@@ -14,6 +14,7 @@ import com.demo.hibernatesecondLevelcaching.config.vaultConfig;
 @RequestMapping("/employees")
 public class EmployeeController {
 
+    @Autowired
     private final EmployeeService employeeService;
 
     @Autowired
